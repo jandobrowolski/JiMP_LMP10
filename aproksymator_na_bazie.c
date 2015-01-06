@@ -18,9 +18,9 @@ fi(double a, double b, int n, int i, double x)
 {
 	double		h = (b - a) / (n - 1);
 	double		h3 = h * h * h;
-	int		hi         [5] = {i - 2, i - 1, i, i + 1, i + 2};
-	double		hx      [5];
-	int		j;
+	int			hi[5] = {i - 2, i - 1, i, i + 1, i + 2};
+	double		hx[5];
+	int			j;
 
 	for (j = 0; j < 5; j++)
 		hx[j] = a + h * hi[j];
@@ -110,28 +110,6 @@ d3fi(double a, double b, int n, int i, double x)
 		return 18 / h3;
 	else			/* if (x > hx[3]) && (x <= hx[4]) */
 		return -6 / h3;
-}
-
-/* Pomocnicza f. do rysowania bazy */
-double
-xfi(double a, double b, int n, int i, FILE *out)
-{
-	double		h = (b - a) / (n - 1);
-	double		h3 = h * h * h;
-	int		hi         [5] = {i - 2, i - 1, i, i + 1, i + 2};
-	double		hx      [5];
-	int		j;
-
-	for (j = 0; j < 5; j++)
-		hx[j] = a + h * hi[j];
-
-	fprintf( out, "# nb=%d, i=%d: hi=[", n, i );
-	for( j= 0; j < 5; j++ )
-		fprintf( out, " %d", hi[j] );
-	fprintf( out, "] hx=[" );
-	for( j= 0; j < 5; j++ )
-		fprintf( out, " %g", hx[j] );
-	fprintf( out, "]\n" );
 }
 
 void
